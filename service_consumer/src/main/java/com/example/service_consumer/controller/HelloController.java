@@ -29,4 +29,9 @@ public class HelloController {
     public String getUser() {
         return helloService.getUser();
     }
+
+    @RequestMapping("/getUserByName")
+    public String getUserByName() {
+        return helloService.getUserByName();
+    }
 }

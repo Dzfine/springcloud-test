@@ -3,9 +3,14 @@ package com.example.service_provider.controller;
 import com.example.service_provider.entity.User;
 import com.example.service_provider.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
+
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class HelloController {
@@ -24,10 +29,9 @@ public class HelloController {
         return user;
     }
 
-    String userName = "david";
-
     @RequestMapping(value = "/getUserByName", method = RequestMethod.GET)
-    public User getUserByName() {
+    public User getUserByName(HttpServletRequest httpServletRequest) {
+        String userName = httpServletRequest.getParameter("userName");
         return helloService.getUserByName(userName);
     }
 

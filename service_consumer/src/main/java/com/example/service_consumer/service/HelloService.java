@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class HelloService {
     @Autowired
@@ -18,4 +21,9 @@ public class HelloService {
     public String getUser() {
         return restTemplate.getForObject("http://service-provider/getUser", String.class);
     }
+
+    public String getUserByName() {
+        return restTemplate.getForObject("http://service-provider/getUserByName?userName={1}", String.class, "mary");
+    }
+
 }
