@@ -8,4 +8,4 @@ eureka:
 
 spring:
   application:
-    name: service_consumer
+    name: service-consumer

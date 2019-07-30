@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.service_provider.mapper.UserMapper">
+    <select id="queryUserByName" resultType="com.example.service_provider.entity.User">
+        select userId,userName,userSex,userSalary from user_tb where userName=#{userName}
+    </select>
+</mapper>

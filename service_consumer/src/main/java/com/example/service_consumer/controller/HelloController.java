@@ -4,6 +4,7 @@ import com.example.service_consumer.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class HelloController {
@@ -11,13 +12,21 @@ public class HelloController {
     @Autowired
     HelloService helloService;
 
+    @Autowired
+    RestTemplate restTemplate;
+
     @RequestMapping("/")
     public String hello(){
         return "This is service consumer!";
     }
 
-    @RequestMapping("/getServiceProvider")
+    @RequestMapping("/getServiceProviderByServiceName")
     public String getServiceProvider() {
-        return helloService.getHelloContent();
+        return helloService.getHelloContentByServiceName();
+    }
+
+    @RequestMapping("/getUser")
+    public String getUser() {
+        return helloService.getUser();
     }
 }

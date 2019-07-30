@@ -9,7 +9,13 @@ public class HelloService {
     @Autowired
     RestTemplate restTemplate;
 
-    public String getHelloContent() {
-        return restTemplate.getForObject("http://service_provider:8081/", String.class);
+    /*service-consumer通过服务名调用service-provider的hello服务*/
+    public String getHelloContentByServiceName() {
+        return restTemplate.getForObject("http://service-provider/hello", String.class);
+    }
+
+    /*service-consumer通过服务名调用service-provider的getUser服务*/
+    public String getUser() {
+        return restTemplate.getForObject("http://service-provider/getUser", String.class);
     }
 }
